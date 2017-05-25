@@ -29,6 +29,10 @@ nbdist/
 nbproject
 build.xml
 manifest.mf
+nb-configuration.xml
+
+### GIT ###
+.gitignore
 
 ### Maven ###
 target/
