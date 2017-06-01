@@ -4,18 +4,22 @@ import java.util.ArrayList;
 import junit.framework.Test;
 import junit.framework.TestCase;
 import junit.framework.TestSuite;
-
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.when;
 /**
  * Unit test for simple App.
  */
 public class AppTest 
     extends TestCase
-{
-    
+{   
     private ArrayList<Dice> wins = new ArrayList<Dice>(3);
     private Dice dice1 = new Dice(4);
     private Dice dice2 = new Dice(2);
     private Dice dice3 = new Dice(1);
+    Dice mockDice5 = mock(Dice.class);
+    Dice mockDice4 = mock(Dice.class);
+    Dice mockDice2 = mock(Dice.class);
+    Dice mockDice1 = mock(Dice.class);
     
     private Throw t = new Throw();
     
@@ -77,6 +81,26 @@ public class AppTest
         Dice d = new Dice();
         int diceNb = d.getDiceNb();
         assertEquals(true, (diceNb<=6 && diceNb>=1));
+    }
+    
+    public void testMockitoDice421(){
+        when(mockDice4.getDiceNb()).thenReturn(4);
+        when(mockDice2.getDiceNb()).thenReturn(2);
+        when(mockDice1.getDiceNb()).thenReturn(1);
+        wins.clear();
+        wins.add(mockDice4);
+        wins.add(mockDice2);
+        wins.add(mockDice1);
+        assertEquals(true, t.checkDice(wins));
+    }
+    
+        public void testMockitoDice555(){
+        when(mockDice5.getDiceNb()).thenReturn(5);
+        wins.clear();
+        wins.add(mockDice5);
+        wins.add(mockDice5);
+        wins.add(mockDice5);
+        assertEquals(true, t.checkDice(wins));
     }
     
 }
